@@ -1,4 +1,4 @@
-name: Docker Image stable
+name: Docker Image stable PR
 
 on:
   # Trigger the workflow on push or pull request,
@@ -6,10 +6,13 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   push_to_registry:
-    name: Push Docker image to Docker Hub
+    name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     strategy:    
       fail-fast: false
@@ -21,12 +24,13 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      - name: Push to Docker hub
+      - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           add_git_labels: true
-          repository: ${{ github.repository }}
-          tags: ${{ matrix.config.base }}
+          registry: docker.pkg.github.com
+          repository: ${{ github.repository }}/${{ github.event.repository.name }}
+          tags: ${{ matrix.config.base }}-PR-${{github.event.number}}
           build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }}
