@@ -32,5 +32,5 @@ jobs:
           add_git_labels: true
           registry: docker.pkg.github.com
           repository: ${{ github.repository }}/${{ github.event.repository.name }}
-          tags: ${{ matrix.config.base }}-PR-{{github.event.number}}
+          tags: ${{ matrix.config.base }}-PR-${{github.event.number}}
           build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }}
