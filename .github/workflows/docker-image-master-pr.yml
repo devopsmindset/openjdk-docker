@@ -15,9 +15,12 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { base: latest, user: "root" }
-          - { base: dind, user: "root" }
-          - { base: dind-rootless, user: "rootless" }
+          - { base: latest, user: "root", java: 8 }
+          - { base: dind, user: "root", java: 8 }
+          - { base: dind-rootless, user: "rootless", java: 8 }
+          - { base: latest-java11, user: "root", java: 11 }
+          - { base: dind-java11, user: "root", java: 11 }
+          - { base: dind-rootless-java11, user: "rootless", java: 11 }
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -30,4 +33,4 @@ jobs:
           registry: docker.pkg.github.com
           repository: ${{ github.repository }}/${{ github.event.repository.name }}
           tags: ${{ matrix.config.base }}-PR-${{github.event.number}}
-          build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }}
+          build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }},JAVA=${{ matrix.config.java }}
