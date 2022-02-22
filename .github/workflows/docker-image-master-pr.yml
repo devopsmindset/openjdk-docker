@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v1
         env: 
           JAVA: ${{ matrix.config.java }}
-       with:
+        with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           add_git_labels: true
