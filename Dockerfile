@@ -5,7 +5,8 @@ FROM docker:${IMAGE_BASE}
 
 USER root
 
-ENV JAVA_PKG "openjdk${JAVA}"
+ENV JAVA_VERSION=${JAVA}
+ENV JAVA_PKG "openjdk${JAVA_VERSION}"
 
 # from https://github.com/tclift/google-cloud-tasks-pull-to-push/blob/master/Dockerfile
 # gogradle supplied Go version compiled against glibc - fake it with musl
