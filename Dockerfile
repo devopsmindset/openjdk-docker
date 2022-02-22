@@ -8,8 +8,8 @@ USER root
 ENV JAVA_PKG "openjdk${JAVA_VERSION}"
 
 RUN JAVA=${JAVA} echo "JAVA: ${JAVA}"
-RUN echo "JAVA: ${JAVA_VERSION}"
-RUN JAVA=${JAVA} ["/bin/sh", "-c", "echo \"JAVA sh: ${JAVA}\""]
+RUN echo "JAVA_VERSION: ${JAVA_VERSION}"
+RUN ["/bin/sh", "-c", "echo \"JAVA sh: ${JAVA}\""]
 RUN ["/bin/sh", "-c", "echo \"JAVA_VERSION sh: ${JAVA_VERSION}\""]
 
 
