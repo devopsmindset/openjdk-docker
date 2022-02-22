@@ -5,12 +5,11 @@ FROM docker:${IMAGE_BASE}
 
 USER root
 
-ENV JAVA_VERSION=${JAVA}
 ENV JAVA_PKG "openjdk${JAVA_VERSION}"
 
-RUN echo "JAVA: ${JAVA}"
-RUN JAVA_VERSION=${JAVA} echo "JAVA_VERSION: ${JAVA_VERSION}"
-RUN ["/bin/sh", "-c", "echo \"JAVA sh: ${JAVA}\""]
+RUN JAVA=${JAVA} echo "JAVA: ${JAVA}"
+RUN echo "JAVA: ${JAVA_VERSION}"
+RUN JAVA=${JAVA} ["/bin/sh", "-c", "echo \"JAVA sh: ${JAVA}\""]
 RUN ["/bin/sh", "-c", "echo \"JAVA_VERSION sh: ${JAVA_VERSION}\""]
 
 

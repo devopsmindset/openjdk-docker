@@ -27,7 +27,7 @@ jobs:
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
         env: 
-          JAVA: ${{ matrix.config.java }}
+          JAVA_VERSION: ${{ matrix.config.java }}
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -35,4 +35,4 @@ jobs:
           registry: docker.pkg.github.com
           repository: ${{ github.repository }}/${{ github.event.repository.name }}
           tags: ${{ matrix.config.base }}-PR-${{github.event.number}}
-          build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }},JAVA=${{ matrix.config.java }}
+          build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }}
