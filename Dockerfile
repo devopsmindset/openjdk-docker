@@ -8,6 +8,12 @@ USER root
 ENV JAVA_VERSION=${JAVA}
 ENV JAVA_PKG "openjdk${JAVA_VERSION}"
 
+RUN echo "JAVA: ${JAVA}"
+RUN echo "JAVA_VERSION: ${JAVA_VERSION}"
+RUN ["/bin/sh", "-c", "echo \"JAVA sh: ${JAVA}\""]
+RUN ["/bin/sh", "-c", "echo \"JAVA_VERSION sh: ${JAVA_VERSION}\""]
+
+
 # from https://github.com/tclift/google-cloud-tasks-pull-to-push/blob/master/Dockerfile
 # gogradle supplied Go version compiled against glibc - fake it with musl
 RUN ["/bin/sh", "-c", "apk update && apk add --no-cache $JAVA_PKG && apk add --no-cache git \
