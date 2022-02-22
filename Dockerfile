@@ -7,7 +7,7 @@ USER root
 
 # from https://github.com/tclift/google-cloud-tasks-pull-to-push/blob/master/Dockerfile
 # gogradle supplied Go version compiled against glibc - fake it with musl
-RUN ["/bin/sh", "-c", "apk update && apk add --no-cache openjdk$JAVA && apk add --no-cache git \
+RUN ["/bin/sh", "-c", "apk update && apk add --no-cache openjdk${JAVA} && apk add --no-cache git \
   && mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2"]
 
 RUN apk add wget && wget -O /tmp/install4j_unix_8_0_8.tar.gz https://download-gcdn.ej-technologies.com/install4j/install4j_unix_8_0_8.tar.gz \
