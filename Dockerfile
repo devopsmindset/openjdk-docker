@@ -1,16 +1,15 @@
 ARG IMAGE_BASE=dind
 ARG IMAGE_USER=root
-ARG JAVA=8
 FROM docker:${IMAGE_BASE}
 
 USER root
 
 ENV JAVA_PKG "openjdk${JAVA_VERSION}"
 
-RUN JAVA=${JAVA} echo "JAVA: ${JAVA}"
-RUN echo "JAVA_VERSION: ${JAVA_VERSION}"
-RUN ["/bin/sh", "-c", "echo \"JAVA sh: ${JAVA}\""]
-RUN ["/bin/sh", "-c", "echo \"JAVA_VERSION sh: ${JAVA_VERSION}\""]
+RUN echo "JAVA_VERSION: $JAVA_VERSION"
+RUN ["/bin/sh", "-c", "echo \"JAVA_VERSION sh: $JAVA_VERSION\""]
+RUN echo "JAVA_PKG: $JAVA_PKG"
+RUN ["/bin/sh", "-c", "echo \"JAVA_PKG sh: $JAVA_PKG\""]
 
 
 # from https://github.com/tclift/google-cloud-tasks-pull-to-push/blob/master/Dockerfile
