@@ -6,18 +6,6 @@ USER root
 ARG JAVA_VERSION_ARG=8
 
 ENV JAVA_PKG "openjdk${JAVA_VERSION_ARG}"
-ENV IMAGE_USER_ENV $IMAGE_USER
-
-
-RUN echo "JAVA_VERSION: $JAVA_VERSION"
-RUN ["/bin/sh", "-c", "echo \"JAVA_VERSION sh: $JAVA_VERSION\""]
-RUN echo "JAVA_VERSION_ARG: $JAVA_VERSION_ARG"
-RUN ["/bin/sh", "-c", "echo \"JAVA_VERSION_ARG sh: $JAVA_VERSION_ARG\""]
-RUN echo "JAVA_PKG: $JAVA_PKG"
-RUN ["/bin/sh", "-c", "echo \"JAVA_PKG sh: $JAVA_PKG\""]
-RUN echo "IMAGE_USER_ENV: \$IMAGE_USER_ENV"
-RUN ["/bin/sh", "-c", "echo \"IMAGE_USER_ENV sh: \$IMAGE_USER_ENV\""]
-
 
 # from https://github.com/tclift/google-cloud-tasks-pull-to-push/blob/master/Dockerfile
 # gogradle supplied Go version compiled against glibc - fake it with musl
