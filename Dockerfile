@@ -5,12 +5,13 @@ FROM docker:${IMAGE_BASE}
 
 USER root
 
-ENV IMAGE_BASE_ENV=${IMAGE_BASE}
+ENV JAVA_VERSION=${JAVA}
+ENV JAVA_PKG "openjdk${JAVA_VERSION}"
 
-RUN echo "IMAGE_BASE: ${IMAGE_BASE}"
-RUN echo "IMAGE_BASE_ENV: ${IMAGE_BASE_ENV}"
-RUN ["/bin/sh", "-c", "echo \"IMAGE_BASE sh: ${IMAGE_BASE}\""]
-RUN ["/bin/sh", "-c", "echo \"IMAGE_BASE_ENV sh: ${IMAGE_BASE_ENV}\""]
+RUN echo "JAVA: ${JAVA}"
+RUN JAVA_VERSION=${JAVA} echo "JAVA_VERSION: ${JAVA_VERSION}"
+RUN ["/bin/sh", "-c", "echo \"JAVA sh: ${JAVA}\""]
+RUN ["/bin/sh", "-c", "echo \"JAVA_VERSION sh: ${JAVA_VERSION}\""]
 
 
 # from https://github.com/tclift/google-cloud-tasks-pull-to-push/blob/master/Dockerfile

@@ -26,10 +26,12 @@ jobs:
         uses: actions/checkout@v2
       - name: Push to Docker hub
         uses: docker/build-push-action@v1
+        env: 
+          JAVA: ${{ matrix.config.java }}
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           add_git_labels: true
           repository: ${{ github.repository }}
           tags: ${{ matrix.config.base }}
-          build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }},JAVA=${{ matrix.config.java }}
+          build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }}
