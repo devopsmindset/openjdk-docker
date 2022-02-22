@@ -35,4 +35,4 @@ jobs:
           registry: docker.pkg.github.com
           repository: ${{ github.repository }}/${{ github.event.repository.name }}
           tags: ${{ matrix.config.base }}-PR-${{github.event.number}}
-          build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }}
+          build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }},JAVA_VERSION_ARG: ${{ matrix.config.java }}

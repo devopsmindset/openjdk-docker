@@ -1,14 +1,17 @@
 ARG IMAGE_BASE=dind
 ARG IMAGE_USER=root
+ARG JAVA_VERSION_ARG
 FROM docker:${IMAGE_BASE}
 
 USER root
 
-ENV JAVA_VERSION
-ENV JAVA_PKG "openjdk${JAVA_VERSION}"
+ENV JAVA_PKG "openjdk${JAVA_VERSION_ARG}"
+
 
 RUN echo "JAVA_VERSION: $JAVA_VERSION"
 RUN ["/bin/sh", "-c", "echo \"JAVA_VERSION sh: $JAVA_VERSION\""]
+RUN echo "JAVA_VERSION_ARG: $JAVA_VERSION_ARG"
+RUN ["/bin/sh", "-c", "echo \"JAVA_VERSION_ARG sh: $JAVA_VERSION_ARG\""]
 RUN echo "JAVA_PKG: $JAVA_PKG"
 RUN ["/bin/sh", "-c", "echo \"JAVA_PKG sh: $JAVA_PKG\""]
 
