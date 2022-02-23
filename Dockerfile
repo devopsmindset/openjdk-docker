@@ -4,9 +4,9 @@ FROM docker:${IMAGE_BASE}
 
 USER root
 
-ARG JAVA_VERSION_ARG=8
+ARG JAVA_VERSION=8
 
-ENV JAVA_PKG "openjdk${JAVA_VERSION_ARG}"
+ENV JAVA_PKG "openjdk${JAVA_VERSION}"
 ENV INSTALL4J_HOME "/opt/install4j"
 
 # from https://github.com/tclift/google-cloud-tasks-pull-to-push/blob/master/Dockerfile
