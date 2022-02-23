@@ -1,11 +1,12 @@
 ARG IMAGE_BASE=dind
 ARG IMAGE_USER=root
-FROM docker:${IMAGE_BASE}
-USER root
-
 ARG JAVA_VERSION_ARG=8
 
 ENV JAVA_PKG "openjdk${JAVA_VERSION_ARG}"
+
+FROM docker:${IMAGE_BASE}
+USER root
+
 ENV INSTALL4J_HOME "/opt/install4j"
 
 # from https://github.com/tclift/google-cloud-tasks-pull-to-push/blob/master/Dockerfile
