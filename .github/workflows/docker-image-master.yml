@@ -18,9 +18,9 @@ jobs:
           - { base: latest, user: "root", java: 8 }
           - { base: dind, user: "root", java: 8 }
           - { base: dind-rootless, user: "rootless", java: 8 }
-          - { base: latest-java11, user: "root", java: 11 }
-          - { base: dind-java11, user: "root", java: 11 }
-          - { base: dind-rootless-java11, user: "rootless", java: 11 }
+          - { base: latest, user: "root", java: 11, imageSuffix: "-java11" }
+          - { base: dind, user: "root", java: 11, imageSuffix: "-java11" }
+          - { base: dind-rootless, user: "rootless", java: 11, imageSuffix: "-java11" }
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -33,5 +33,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           add_git_labels: true
           repository: ${{ github.repository }}
-          tags: ${{ matrix.config.base }}
-          build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }}
+          tags: ${{ matrix.config.base }}${{ matrix.config.imageSuffix }}
+          build_args: IMAGE_BASE=${{ matrix.config.base }},IMAGE_USER=${{ matrix.config.user }},JAVA_VERSION_ARG:${{ matrix.config.java }}
