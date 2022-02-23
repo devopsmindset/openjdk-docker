@@ -26,8 +26,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
-        env: 
-          JAVA_VERSION: ${{ matrix.config.java }}
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
