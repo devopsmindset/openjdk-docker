@@ -21,6 +21,7 @@ jobs:
           - { base: latest, user: "root", java: 11, imageSuffix: "-java11" }
           - { base: dind, user: "root", java: 11, imageSuffix: "-java11" }
           - { base: dind-rootless, user: "rootless", java: 11, imageSuffix: "-java11" }
+          - { base: dind, user: "root", java: 17, imageSuffix: "-java17" }
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
