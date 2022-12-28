@@ -17,6 +17,8 @@ RUN apk update && apk add --no-cache $JAVA_PKG && apk add --no-cache git \
 RUN apk add git && apk add --no-cache tar &&  apk add bash && apk add wget && apk --no-cache add fontconfig ttf-dejavu && wget -nv -O /tmp/install4j_unix_8_0_8.tar.gz https://download-gcdn.ej-technologies.com/install4j/install4j_unix_8_0_8.tar.gz \
    && tar -zxvf /tmp/install4j_unix_8_0_8.tar.gz && mv install4j8.0.8/ $INSTALL4J_HOME && rm /tmp/install4j_unix_8_0_8.tar.gz && apk add --no-cache libstdc++
 
+ENV DOCKERD_ROOTLESS_ROOTLESSKIT_MTU=1450
+
 ENTRYPOINT ["dockerd-entrypoint.sh"]
 CMD []
 
