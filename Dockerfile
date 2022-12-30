@@ -19,7 +19,10 @@ RUN apk add git && apk add --no-cache tar &&  apk add bash && apk add wget && ap
 
 ENV DOCKERD_ROOTLESS_ROOTLESSKIT_MTU=1400
 
+ENV MAX_CONCURRENT_UPLOADS=5
+
 ENTRYPOINT ["dockerd-entrypoint.sh"]
-CMD []
+
+CMD ["--max-concurrent-uploads=${MAX_CONCURRENT_UPLOADS}"]
 
 USER ${IMAGE_USER}
